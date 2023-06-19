@@ -1,0 +1,42 @@
+<head>
+  <meta charset="utf-8">
+  <title>Документ без названия</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <style>
+  .touchMeNot{
+      position:absolute;
+      left:0;
+      top:0;
+  }
+  </style>
+  </head>
+  <body>
+    <button class="touchMeNot">Нажми меня (3 попытки)</button>
+  
+    <script>
+    var myFuncCalls = 0;
+    $('.touchMeNot').on('mouseenter',function(e){
+        var maxX = $(window).width() - $(this).width();
+        var maxY = $(window).height() - $(this).height();
+        $(this).css({
+            'left':getRandomInt(0, maxX),
+            'top':getRandomInt(0, maxY)
+        });
+  
+         if (myFuncCalls > 2) {
+        alert( "I have been called " + myFuncCalls + " times" );
+            $(this).css({
+            'left':0,
+            'top':0
+        });
+    }
+    myFuncCalls++;
+  
+    });
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+  
+    </script>
+  </body>
+  </html>
